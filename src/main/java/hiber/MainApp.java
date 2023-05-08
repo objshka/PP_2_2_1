@@ -42,7 +42,11 @@ public class MainApp {
          System.out.println();
       }
 
-      System.out.println(userService.getUserByCar("Audi", 4));
+      if (userService.getUserByCar("Audi", 4) != null) {
+         System.out.println(userService.getUserByCar("Audi", 4));
+      } else {
+         System.out.println("User not found");
+      }
 
       context.close();
    }

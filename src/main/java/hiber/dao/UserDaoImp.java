@@ -32,7 +32,11 @@ public class UserDaoImp implements UserDao {
               "from User user where user.car.model = :model and user.car.series = :series", User.class)
               .setParameter("model", model)
               .setParameter("series", series);
-      return query.setFirstResult(0).getSingleResult();
+      List<User> users = query.getResultList();
+      if (users.size() != 1) {
+         return null;
+      }
+      return query.getSingleResult();
    }
 
 }
