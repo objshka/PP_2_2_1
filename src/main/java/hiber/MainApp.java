@@ -3,6 +3,7 @@ package hiber;
 import hiber.config.AppConfig;
 import hiber.model.Car;
 import hiber.model.User;
+import hiber.service.CarService;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -42,11 +43,9 @@ public class MainApp {
          System.out.println();
       }
 
-      if (userService.getUserByCar("Audi", 4) != null) {
-         System.out.println(userService.getUserByCar("Audi", 4));
-      } else {
-         System.out.println("User not found");
-      }
+      CarService carService = context.getBean(CarService.class);
+
+      System.out.println(carService.getUserByCar("Audi", 4));
 
       context.close();
    }

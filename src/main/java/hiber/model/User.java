@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
@@ -18,8 +17,9 @@ public class User {
 
    @Column(name = "email")
    private String email;
+
    @OneToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "car_id")
+   @MapsId
    private Car car;
 
    public User() {}
